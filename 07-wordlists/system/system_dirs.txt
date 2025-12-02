@@ -1,11 +1,13 @@
-# Common Linux system directories (SAFE)
-bin
-sbin
-etc
-opt
-usr
-var
-tmp
-home
-root
-srv
+# Common System Directories
+/etc
+/var
+/usr
+/home
+/root
+/tmp
+/dev
+/boot
+/lib
+/sbin
+/bin
+/opt

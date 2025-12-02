@@ -1,13 +1,13 @@
-version: "3"
-
+version: '3'
 services:
   sliver-server:
-    image: sliverproject/sliver:stable   # Official sanctioned image
-    container_name: sliver-server
-    ports:
-      - "31337:31337"   # Sliver interactive port (lab)
-      - "80:80"
-      - "443:443"
+    image: byt3bl33d3r/sliver-server:latest
     volumes:
-      - ./data:/sliver
-    restart: unless-stopped
+      - ./certs:/certs
+      - ./config:/config
+      - ./logs:/logs
+    ports:
+      - "8080:8080"
+    environment:
+      - SLIVER_CERT=/certs/server/cert.pem
+      - SLIVER_KEY=/certs/server/key.pem

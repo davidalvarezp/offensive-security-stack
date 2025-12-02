@@ -1,16 +1,6 @@
 #!/bin/bash
-# Enumerates SMB shares and server info
-TARGET=$1
-
-if [ -z "$TARGET" ]; then
-    echo "Usage: ./enum_smb.sh <IP>"
-    exit 1
-fi
-
-echo "[*] SMB Enumeration on $TARGET"
-
-smbclient -L "$TARGET" -N
-rpcclient -U "" "$TARGET" -c "enumdomusers"
-enum4linux-ng -A "$TARGET"
-
-echo "[+] SMB enumeration completed."
+# enum_smb.sh - SMB enumeration
+DOMAIN=\$1
+OUTPUT_DIR="../\${DOMAIN}"
+mkdir -p \$OUTPUT_DIR
+smbclient -L //\$DOMAIN/ -N > \$OUTPUT_DIR/smb_shares.txt

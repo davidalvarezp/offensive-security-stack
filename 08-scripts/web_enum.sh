@@ -1,23 +1,14 @@
 #!/bin/bash
-# Web enumeration script (Lab Use Only)
-# Requires: ffuf, gobuster, nikto, sqlmap
+# web_enum.sh - Web application enumeration
+TARGET=\$1
+OUTPUT_DIR="../02-web/logs/\$TARGET"
+mkdir -p \$OUTPUT_DIR
 
-TARGET=$1
+# Run Nikto scan
+nikto -h \$TARGET -o \$OUTPUT_DIR/nikto_scan.txt
 
-if [ -z "$TARGET" ]; then
-    echo "Usage: ./web_enum.sh <target_url>"
-    exit 1
-fi
+# Run Gobuster scan
+gobuster dir -u \$TARGET -w ../../07-wordlists/web/common_paths.txt -o \$OUTPUT_DIR/gobuster_scan.txt
 
-echo "[*] Starting web enumeration for $TARGET"
-
-echo "[*] Running Gobuster"
-gobuster dir -u "$TARGET" -w ./07-wordlists/web/common_paths.txt -o gobuster_$TARGET.txt
-
-echo "[*] Running FFUF"
-ffuf -w ./07-wordlists/web/fuzz_template.txt -u "$TARGET/FUZZ" -o ffuf_$TARGET.json
-
-echo "[*] Running Nikto scan"
-nikto -h "$TARGET" -o nikto_$TARGET.txt
-
-echo "[*] Web enumeration completed."
+# Run SQLMap scan
+sqlmap -u \$TARGET --batch --dump-all -o \$OUTPUT_DIR/sqlmap_scan.txt

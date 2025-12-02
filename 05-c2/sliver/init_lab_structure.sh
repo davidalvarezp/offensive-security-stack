@@ -1,4 +1,5 @@
 #!/bin/bash
-# Initialize folder structure for Sliver (safe)
-mkdir -p data/{configs,logs,certs}
-echo "[+] Sliver lab structure created."
+# init_lab_structure.sh - Initialize Sliver lab structure
+mkdir -p certs/client
+mkdir -p certs/server
+mkdir -p config

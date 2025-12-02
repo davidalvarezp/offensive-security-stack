@@ -1,5 +1,5 @@
-# Add here your IPs or domains to enumerate
+# Targets list
+# Format: domain.com
 # Example:
-# 10.10.10.10
-# 192.168.1.0/24
-# example.com
+example.com
+192.168.1.1

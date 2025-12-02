@@ -1,3 +1,4 @@
-# Authentication Testing Folder
-# Place scripts, wordlists or notes for login forms, brute-force, and auth enumeration.
-# Do NOT include credentials of real users or illegal exploits.
+Authentication Testing Notes
+- Store discovered credentials here
+- Document authentication bypass attempts
+- Track session management issues

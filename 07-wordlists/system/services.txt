@@ -1,13 +1,14 @@
-# Common service names (SAFE)
+# Common System Services
 ssh
-ftp
 http
 https
-mysql
-postgres
-smb
-ldap
-dns
-rdp
+ftp
 smtp
+pop3
 imap
+mysql
+mssql
+postgresql
+redis
+mongodb
+memcached

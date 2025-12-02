@@ -1,19 +1,18 @@
-# Lab Attack Notes (Educational Purposes Only)
+# AD Attack Lab Notes
+## Target Environment:
+- Domain: lab.local
+- Forest: lab.local
+- Trusts: None
 
-This directory is meant to store:
-- Testing notes
-- Non-malicious commands
-- Step-by-step lab practices
+## Attack Paths:
+1. Password Spraying
+2. Kerberoasting
+3. AS-REP Roasting
+4. Golden Ticket
+5. DCShadow
 
-NO real offensive payloads or exploitation scripts are allowed here.
-
-Example workflow:
-
-1. SMB null session checks
-   # smbclient -L //DC_IP -N
-
-2. Kerberos user enumeration (lab only)
-   # nmap --script krb5-enum-users -p 88 DC_IP
-
-3. LDAP queries for public objects
-   # ldapsearch -x -H ldap://DC_IP -b "DC=lab,DC=local"
+## Tools Used:
+- PowerView
+- PowerSploit
+- BloodHound
+- Mimikatz

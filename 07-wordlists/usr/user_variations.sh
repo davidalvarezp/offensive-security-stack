@@ -1,21 +1,12 @@
 #!/bin/bash
-# Generates username variants (lab only)
+# user_variations.sh - Generate user variations
+NAMES_FILE="names_lab.txt"
+OUTPUT_FILE="user_variations.txt"
 
-NAME=$1
-if [ -z "$NAME" ]; then
-    echo "Usage: ./user_variations.sh <name>"
-    exit 1
-fi
-
-FILE="$NAME-variants.txt"
-
-echo "[*] Generating username variants..."
-
-echo "$NAME"           >  "$FILE"
-echo "${NAME}1"       >> "$FILE"
-echo "${NAME}123"     >> "$FILE"
-echo "${NAME}_lab"    >> "$FILE"
-echo "${NAME}.user"   >> "$FILE"
-echo "${NAME}2024"    >> "$FILE"
-
-echo "[+] Saved to $FILE"
+while read name; do
+  echo "\$name"
+  echo "\${name}1"
+  echo "\${name}2"
+  echo "\${name}!"
+  echo "\${name}.\${name}"
+done < \$NAMES_FILE > \$OUTPUT_FILE

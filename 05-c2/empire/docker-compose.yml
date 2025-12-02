@@ -1,14 +1,13 @@
-version: "3"
-
+version: '3'
 services:
-  empire-server:
-    image: bcsecurity/empire:latest   # Public, defensive research image
-    container_name: empire-server
-    ports:
-      - "1337:1337"   # API
-      - "5000:5000"   # Web Interface
-    environment:
-      - HOSTNAME=localhost
+  empire:
+    image: bcsecurity/empire:latest
     volumes:
-      - ./data:/empire
-    restart: unless-stopped
+      - ./listeners:/empire/listeners
+      - ./logs:/empire/logs
+    ports:
+      - "1337:1337"
+    environment:
+      - EMPIRE_HTTP_PORT=80
+      - EMPIRE_HTTPS_PORT=443
+      - EMPIRE_STAGER_PORT=8080

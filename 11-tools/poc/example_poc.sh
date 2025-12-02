@@ -1,7 +1,10 @@
 #!/bin/bash
-# Safe lab PoC example
-# Simulates an action without affecting real systems
+# example_poc.sh - Shell script PoC
+TARGET=\$1
 
-echo "[*] Simulating an action..."
-sleep 1
-echo "[+] PoC executed safely in lab."
+curl -s \$TARGET | grep -q "vulnerable_string"
+if [ \$? -eq 0 ]; then
+    echo "[+] Vulnerability confirmed!"
+else
+    echo "[-] Vulnerability not confirmed"
+fi

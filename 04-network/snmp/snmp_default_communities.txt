@@ -1,5 +1,7 @@
-# Common SNMP community strings (lab testing only)
 public
 private
+cisco
+admin
+manager
 community
-test
+secret

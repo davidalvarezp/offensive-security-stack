@@ -1,6 +1,9 @@
-# Custom Tools (Lab Use Only)
+# Custom Tools
+## Tools Available:
+- example_tool.sh: Custom tool template
 
-This folder contains custom scripts, binaries, or utilities
-created by the user for lab experiments.
-
-⚠️ No real-world exploits or sensitive data should be stored here.
+## How to Use:
+1. Copy the template and rename it
+2. Add your custom functionality
+3. Make executable with chmod +x
+4. Place in the appropriate directory

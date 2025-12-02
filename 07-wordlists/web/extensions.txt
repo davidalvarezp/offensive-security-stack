@@ -1,11 +1,13 @@
-# Common web file extensions (SAFE)
-php
-html
-js
-css
-json
-txt
-xml
-bak
-old
-conf
+# Common File Extensions
+.php
+.html
+.htm
+.asp
+.aspx
+.jsp
+.js
+.css
+.txt
+.xml
+.json
+.sql

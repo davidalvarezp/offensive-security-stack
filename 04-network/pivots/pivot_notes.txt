@@ -1,11 +1,11 @@
-# Pivoting Notes (Lab Use Only)
+# Pivot Notes
+## Pivoting Techniques:
+1. SSH Tunneling
+2. Port Forwarding
+3. SOCKS Proxy
+4. VPN Tunneling
 
-This folder stores information related to pivoting inside lab networks:
-- Target hosts
-- Open ports
-- Exploit results (lab only)
-- SSH tunnels or proxychains setups
-
-Examples of lab pivot commands (do NOT use on production):
-# ssh -L 1080:targethost:80 user@bastion
-# proxychains curl http://internal.lab.local
+## Pivot Points:
+- IP: 192.168.1.100
+- User: compromised_user
+- Access: Internal network

@@ -1,25 +1,18 @@
 #!/bin/bash
-# Automated Recon Script (Lab Use Only)
-# Combines tools from 01-recon and 04-network/scanning
+# recon_auto.sh - Automated reconnaissance
+TARGET=\$1
+OUTPUT_DIR="../01-recon/\$TARGET"
+mkdir -p \$OUTPUT_DIR
 
-TARGET=$1
-SUBNET=$2
+# Run Nmap scan
+nmap -sS -sV -O -p- \$TARGET -oA \$OUTPUT_DIR/nmap_scan
 
-if [ -z "$TARGET" ] || [ -z "$SUBNET" ]; then
-    echo "Usage: ./recon_auto.sh <target> <subnet>"
-    exit 1
-fi
+# Run Amass scan
+amass enum -d \$TARGET -o \$OUTPUT_DIR/amass_scan.txt
 
-echo "[*] Starting automated recon for $TARGET"
+# Run DNS enumeration
+dig \$TARGET ANY > \$OUTPUT_DIR/dns_enum.txt
+whois \$TARGET > \$OUTPUT_DIR/whois.txt
 
-# Run recon tools
-echo "[*] Running Nmap scan"
-nmap -sC -sV -oN recon_nmap_$TARGET.txt "$TARGET"
-
-echo "[*] Running DNS enumeration"
-bash ./01-recon/dns/dns_enum.sh "$TARGET"
-
-echo "[*] Running masscan (lab only)"
-masscan "$SUBNET" -p1-65535 --rate=1000 -oG masscan_$SUBNET.txt
-
-echo "[+] Automated recon completed. Check output files."
+# Run Masscan
+masscan \$TARGET -p1-65535 --rate=1000 -oJ \$OUTPUT_DIR/masscan.json

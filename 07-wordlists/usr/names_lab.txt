@@ -1,11 +1,10 @@
-# Example lab usernames (SAFE)
-john
-jane
-adam
-lucas
-emma
-maria
-ethan
-olivia
-techuser
-admin.lab
+# Common User Names
+admin
+administrator
+root
+user
+guest
+test
+demo
+dev
+devops

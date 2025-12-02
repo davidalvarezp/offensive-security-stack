@@ -1,15 +1,6 @@
 #!/bin/bash
-# SQL Injection testing template using sqlmap
-
-TARGET=$1
-OUTPUT="sqlmap-$TARGET"
-
-if [ -z "$TARGET" ]; then
-    echo "Usage: ./sqlmap_scan.sh <url>"
-    exit 1
-fi
-
-echo "[*] Running sqlmap on $TARGET"
-sqlmap -u "$TARGET" --batch --output-dir="$OUTPUT"
-
-echo "[+] Output saved to $OUTPUT"
+# sqlmap_scan.sh - SQLMap scan
+TARGET=\$1
+OUTPUT_DIR="./\${TARGET}"
+mkdir -p \$OUTPUT_DIR
+sqlmap -u \$TARGET --batch --dump-all -o \$OUTPUT_DIR/sqlmap_\${TARGET}.txt

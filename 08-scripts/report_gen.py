@@ -1,35 +1,27 @@
 #!/usr/bin/env python3
-"""
-Simple lab report generator
-Collects logs from various folders and creates a summary report.
-"""
-
+# report_gen.py - Generate assessment report
+import argparse
+import datetime
 import os
-from datetime import datetime
 
-# Directories to include in report
-LOG_DIRS = [
-    "./09-logs",
-    "./04-network/logs",
-    "./03-ad/logs",
-    "./06-osint/logs",
-    "./02-web/logs"
-]
+def generate_report(report_type, output_dir):
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    report_path = os.path.join(output_dir, f"{report_type}_{timestamp}.md")
+    
+    with open(report_path, 'w') as f:
+        f.write(f"# {report_type.upper()} Assessment Report\n")
+        f.write(f"## Date: {datetime.date.today()}\n")
+        f.write("## Executive Summary:\n")
+        f.write("## Findings:\n")
+        f.write("## Recommendations:\n")
+        f.write("## Appendices:\n")
+    
+    print(f"Report generated at {report_path}")
 
-REPORT_FILE = f"10-reports/summary_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
-
-os.makedirs("10-reports", exist_ok=True)
-
-with open(REPORT_FILE, "w") as report:
-    report.write(f"Lab Report generated on {datetime.now()}\n")
-    report.write("="*50 + "\n\n")
-    for log_dir in LOG_DIRS:
-        report.write(f"Logs from {log_dir}:\n")
-        if os.path.exists(log_dir):
-            for file in os.listdir(log_dir):
-                report.write(f" - {file}\n")
-        else:
-            report.write(" (No logs found)\n")
-        report.write("\n")
-
-print(f"[+] Report generated: {REPORT_FILE}")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Generate assessment report')
+    parser.add_argument('report_type', choices=['recon', 'web', 'ad', 'network', 'c2'], help='Type of report to generate')
+    parser.add_argument('--output-dir', default='./reports', help='Output directory for report')
+    args = parser.parse_args()
+    
+    generate_report(args.report_type, args.output_dir)

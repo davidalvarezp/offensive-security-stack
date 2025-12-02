@@ -1,22 +1,7 @@
 #!/bin/bash
-# Basic DNS enumeration script
-
-DOMAIN=$1
-
-if [ -z "$DOMAIN" ]; then
-    echo "Usage: ./dns_enum.sh <domain>"
-    exit 1
-fi
-
-echo "[*] Running DNS enumeration on $DOMAIN"
-
-dig $DOMAIN any
-dig $DOMAIN mx
-dig $DOMAIN ns
-dig $DOMAIN txt
-dig $DOMAIN soa
-
-echo "[*] Checking zone transfer..."
-for ns in $(dig $DOMAIN ns +short); do
-    dig axfr $DOMAIN @$ns
-done
+# dns_enum.sh - DNS enumeration script
+TARGET=\$1
+OUTPUT_DIR="./\${TARGET}"
+mkdir -p \$OUTPUT_DIR
+dig \$TARGET ANY > \$OUTPUT_DIR/dig_\${TARGET}.txt
+whois \$TARGET > \$OUTPUT_DIR/whois_\${TARGET}.txt

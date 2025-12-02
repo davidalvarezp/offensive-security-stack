@@ -1,13 +1,17 @@
 #!/usr/bin/env python3
-"""
-Safe Lab PoC Example
+# example_poc.py - Proof of Concept
+import requests
 
-This Python script demonstrates a concept in a safe environment.
-"""
-
-def simulate_action():
-    print("[*] Simulating an attack vector (lab only)")
-    print("[+] No real system is affected")
+def poc(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            print("[+] Vulnerability confirmed!")
+        else:
+            print("[-] Vulnerability not confirmed")
+    except Exception as e:
+        print(f"[-] Error: {e}")
 
 if __name__ == "__main__":
-    simulate_action()
+    url = input("Enter target URL: ")
+    poc(url)

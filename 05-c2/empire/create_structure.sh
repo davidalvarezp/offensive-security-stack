@@ -1,4 +1,6 @@
 #!/bin/bash
-# Create Empire data folder (safe)
-mkdir -p data/{certs,config,logs,profiles}
-echo "[+] Empire directory structure created."
+# create_structure.sh - Create Empire structure
+mkdir -p listeners/stagers
+mkdir -p listeners/http
+mkdir -p listeners/https
+mkdir -p listeners/httpstager

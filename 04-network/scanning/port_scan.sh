@@ -1,14 +1,7 @@
 #!/bin/bash
-# Basic TCP port scan using nmap for lab environment
-
-TARGET=$1
-
-if [ -z "$TARGET" ]; then
-    echo "Usage: ./port_scan.sh <IP>"
-    exit 1
-fi
-
-echo "[*] Scanning all ports on $TARGET"
-nmap -p- -T4 "$TARGET" -oN "scan_$TARGET.txt"
-
-echo "[+] Scan results saved to scan_$TARGET.txt"
+# port_scan.sh - Port scanning
+TARGET=\$1
+OUTPUT_DIR="./\${TARGET}"
+mkdir -p \$OUTPUT_DIR
+nmap -sS -sU -p- \$TARGET -oA \$OUTPUT_DIR/nmap_port_scan
+masscan \$TARGET -p1-65535 --rate=1000 -oJ \$OUTPUT_DIR/masscan_port_scan.json

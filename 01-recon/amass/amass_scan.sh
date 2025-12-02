@@ -1,15 +1,7 @@
 #!/bin/bash
-# Passive/Active subdomain enumeration using amass
-
-DOMAIN=$1
-OUTPUT="results-$DOMAIN.txt"
-
-if [ -z "$DOMAIN" ]; then
-    echo "Usage: ./amass_scan.sh <domain>"
-    exit 1
-fi
-
-echo "[*] Running Amass enumeration on $DOMAIN"
-amass enum -d "$DOMAIN" -o "$OUTPUT"
-
-echo "[+] Output saved to $OUTPUT"
+# amass_scan.sh - Run Amass scan
+TARGET=\$1
+OUTPUT_DIR="./\${TARGET}"
+mkdir -p \$OUTPUT_DIR
+amass enum -d \$TARGET -o \$OUTPUT_DIR/amass_enum.txt
+amass viz -d \$TARGET -o \$OUTPUT_DIR/amass_viz.png

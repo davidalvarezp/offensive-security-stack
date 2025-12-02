@@ -1,18 +1,14 @@
 #!/bin/bash
-# Parses breach CSV files (lab only)
-# No real breach data should ever be added to this repository.
+# process_breach.sh - Process breach data
+BREACH_FILE=\$1
+OUTPUT_DIR="./processed/\$(basename \$BREACH_FILE .csv)"
+mkdir -p \$OUTPUT_DIR
 
-FILE=$1
+# Extract unique emails
+cut -d',' -f1 \$BREACH_FILE | sort -u > \$OUTPUT_DIR/emails.txt
 
-if [ -z "$FILE" ]; then
-    echo "Usage: ./process_breach.sh <breach_file.csv>"
-    exit 1
-fi
+# Extract unique domains
+cut -d',' -f2 \$BREACH_FILE | sort -u > \$OUTPUT_DIR/domains.txt
 
-echo "[*] Counting unique emails..."
-cut -d',' -f1 "$FILE" | sort -u | wc -l
-
-echo "[*] Top repeated passwords (lab simulation)"
-cut -d',' -f2 "$FILE" | sort | uniq -c | sort -nr | head
-
-echo "[+] Breach stats generated."
+# Extract passwords
+cut -d',' -f3 \$BREACH_FILE | sort -u > \$OUTPUT_DIR/passwords.txt

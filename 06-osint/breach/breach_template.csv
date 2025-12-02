@@ -1,2 +1,3 @@
-email,password,source,notes
-example@lab.local,Password123,example-breach,"Lab example record"
+email,domain,password
+user@example.com,example.com,password123
+user2@example.com,example.com,password456

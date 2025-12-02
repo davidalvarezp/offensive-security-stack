@@ -1,10 +1,5 @@
-# Sliver C2 (Lab Template Only)
-
-This folder stores:
-- Docker setup templates
-- Configuration files
-- Certificates generated inside the lab (never upload real ones)
-- Content for education and research only
-
-⚠️ Do NOT store Sliver implants, beacon binaries, or loaders.
-⚠️ This folder remains SAFE for GitHub.
+# Sliver C2 Infrastructure
+## Setup:
+1. Run init_lab_structure.sh to initialize directories
+2. Generate certificates with openssl
+3. Start Sliver server with docker-compose up

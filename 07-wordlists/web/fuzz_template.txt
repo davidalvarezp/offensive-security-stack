@@ -1,9 +1,12 @@
-# Custom fuzzing entries for lab exercises
-test
-upload
-backup
-admin-panel
-internal
-dev
-api/v1
-api/v2
+# Fuzzing Template
+FUZZ
+FUZZ1
+FUZZ2
+FUZZ3
+FUZZ4
+FUZZ5
+FUZZ6
+FUZZ7
+FUZZ8
+FUZZ9
+FUZZ10

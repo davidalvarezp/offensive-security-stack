@@ -1,21 +1,17 @@
 #!/bin/bash
-# AD Enumeration Script (Lab Use Only)
-# Requires: enum_smb.sh, enum_ldap.sh, enum_rpc.sh, enum_kerberos.sh from 03-ad/enum
+# ad_enum.sh - Active Directory enumeration
+DOMAIN=\$1
+OUTPUT_DIR="../03-ad/enum/\$DOMAIN"
+mkdir -p \$OUTPUT_DIR
 
-TARGET=$1
-DOMAIN=$2
-DC_IP=$3
+# Run Kerberos enumeration
+GetUserSPNs.py -request \$DOMAIN/ -dc-ip 192.168.1.1 > \$OUTPUT_DIR/kerberos_enum.txt
 
-if [ -z "$TARGET" ] || [ -z "$DOMAIN" ] || [ -z "$DC_IP" ]; then
-    echo "Usage: ./ad_enum.sh <target> <domain> <dc_ip>"
-    exit 1
-fi
+# Run LDAP enumeration
+ldapsearch -x -H ldap://192.168.1.1 -D "cn=admin,cn=Users,dc=\$(echo \$DOMAIN | tr '.' ',dc=')" -w password -b "dc=\$(echo \$DOMAIN | tr '.' ',dc=')" > \$OUTPUT_DIR/ldap_dump.ldif
 
-echo "[*] Starting Active Directory enumeration for $TARGET"
+# Run RPC enumeration
+rpcclient -U "" -N \$DOMAIN > \$OUTPUT_DIR/rpc_enum.txt
 
-bash ./03-ad/enum/enum_smb.sh "$TARGET"
-bash ./03-ad/enum/enum_ldap.sh "$TARGET"
-bash ./03-ad/enum/enum_rpc.sh "$TARGET"
-bash ./03-ad/enum/enum_kerberos.sh "$DOMAIN" "$DC_IP"
-
-echo "[+] AD enumeration completed."
+# Run SMB enumeration
+smbclient -L //\$DOMAIN/ -N > \$OUTPUT_DIR/smb_enum.txt

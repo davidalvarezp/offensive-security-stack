@@ -1,11 +1,6 @@
 #!/bin/bash
-# WHOIS lookup script (legal OSINT)
-
-DOMAIN=$1
-
-if [ -z "$DOMAIN" ]; then
-    echo "Usage: ./whois_lookup.sh <domain>"
-    exit 1
-fi
-
-whois "$DOMAIN"
+# whois_lookup.sh - Perform WHOIS lookup
+DOMAIN=\$1
+OUTPUT_DIR="./\${DOMAIN}"
+mkdir -p \$OUTPUT_DIR
+whois \$DOMAIN > \$OUTPUT_DIR/whois_\${DOMAIN}.txt

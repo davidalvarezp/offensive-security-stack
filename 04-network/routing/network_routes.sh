@@ -1,12 +1,11 @@
 #!/bin/bash
-# Network routing visualization and basic checks
+# network_routes.sh - Configure network routes
+TARGET_SUBNET=\$1
+GATEWAY_IP=\$2
+INTERFACE=\$3
 
-echo "[*] Display current routes"
-ip route show
+# Add route to target subnet
+ip route add \$TARGET_SUBNET via \$GATEWAY_IP dev \$INTERFACE
 
-echo "[*] Ping default gateway"
-GATEWAY=$(ip route | grep default | awk '{print $3}')
-ping -c 3 $GATEWAY
-
-echo "[*] Trace route to lab target (example: 10.10.10.10)"
-# traceroute 10.10.10.10
+# Enable IP forwarding
+echo 1 > /proc/sys/net/ipv4/ip_forward

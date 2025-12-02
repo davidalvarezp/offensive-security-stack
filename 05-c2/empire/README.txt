@@ -1,11 +1,5 @@
-# Empire (Lab Template Only)
-
-This directory is meant for:
-- Configuration notes
-- Docker setup templates
-- Listener / profile templates (NO payloads)
-
-⚠️ No agents, payloads, stagers, launcher code, or malicious content
-should ever be stored in this folder.
-
-Use only in isolated, authorized lab environments.
+# Empire C2 Infrastructure
+## Setup:
+1. Run create_structure.sh to initialize directories
+2. Start Empire with docker-compose up
+3. Configure listeners in listeners/ directory

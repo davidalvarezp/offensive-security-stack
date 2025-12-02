@@ -1,20 +1,17 @@
 #!/bin/bash
-# Generates simple password variations for lab use.
+# generate_password_list.sh - Generate password list
+OUTPUT_FILE="custom_passwords.txt"
+touch \$OUTPUT_FILE
 
-BASE=$1
+# Add common passwords
+echo -e "password\n123456\nadmin\nletmein\nqwerty" >> \$OUTPUT_FILE
 
-if [ -z "$BASE" ]; then
-    echo "Usage: ./generate_password_list.sh <baseword>"
-    exit 1
-fi
+# Add dictionary words
+cat /usr/share/dict/words | grep -E '^[a-zA-Z0-9]{8,12}$' >> \$OUTPUT_FILE
 
-echo "[*] Generating password variations for: $BASE"
-
-echo "$BASE"              >  "$BASE-wordlist.txt"
-echo "${BASE}123"        >> "$BASE-wordlist.txt"
-echo "${BASE}2024"       >> "$BASE-wordlist.txt"
-echo "${BASE}!"          >> "$BASE-wordlist.txt"
-echo "${BASE}@123"       >> "$BASE-wordlist.txt"
-echo "${BASE}_lab"       >> "$BASE-wordlist.txt"
-
-echo "[+] Generated: $BASE-wordlist.txt"
+# Add common patterns
+for i in {1..10}; do
+  echo "password\$i"
+  echo "admin\$i"
+  echo "letmein\$i"
+done >> \$OUTPUT_FILE

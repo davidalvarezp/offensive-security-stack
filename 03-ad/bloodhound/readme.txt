@@ -1,8 +1,9 @@
-# BloodHound Folder
+# BloodHound Usage Notes
+## Collection:
+- Run bh_collect.sh to gather data
+- Import data into BloodHound UI
 
-Place your BloodHound collection ZIP files here (e.g., from SharpHound).
-Analysis is performed using BloodHound via Docker or local GUI tools.
-
-Note:
-- SharpHound binaries are NOT included.
-- This is for lab environments only.
+## Analysis:
+- Look for high-value targets
+- Identify shortest paths to domain admin
+- Analyze group memberships

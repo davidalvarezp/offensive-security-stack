@@ -1,18 +1,14 @@
 #!/bin/bash
-# Network enumeration script (Lab Use Only)
-# Requires: scanning/port_scan.sh, scanning/network_enum.sh
+# network_enum.sh - Network enumeration
+TARGET=\$1
+OUTPUT_DIR="../04-network/scanning/\$TARGET"
+mkdir -p \$OUTPUT_DIR
 
-SUBNET=$1
-TARGET=$2
+# Run Nmap ping scan
+nmap -sP \$TARGET -oG \$OUTPUT_DIR/nmap_ping_scan.txt
 
-if [ -z "$SUBNET" ] || [ -z "$TARGET" ]; then
-    echo "Usage: ./network_enum.sh <subnet> <target>"
-    exit 1
-fi
+# Run Nmap port scan
+nmap -sS -sU -p- \$TARGET -oA \$OUTPUT_DIR/nmap_port_scan
 
-echo "[*] Running network enumeration for subnet $SUBNET and host $TARGET"
-
-bash ./04-network/scanning/network_enum.sh "$SUBNET"
-bash ./04-network/scanning/port_scan.sh "$TARGET"
-
-echo "[+] Network enumeration completed."
+# Run Masscan
+masscan \$TARGET -p1-65535 --rate=1000 -oJ \$OUTPUT_DIR/masscan_scan.json
