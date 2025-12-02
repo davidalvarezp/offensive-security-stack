@@ -1,0 +1,11 @@
+# Example lab usernames (SAFE)
+john
+jane
+adam
+lucas
+emma
+maria
+ethan
+olivia
+techuser
+admin.lab

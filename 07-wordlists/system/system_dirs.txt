@@ -1,0 +1,11 @@
+# Common Linux system directories (SAFE)
+bin
+sbin
+etc
+opt
+usr
+var
+tmp
+home
+root
+srv

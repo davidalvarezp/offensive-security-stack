@@ -1,0 +1,4 @@
+# Domain list for OSINT (Lab Only)
+examplelab.local
+testlab.net
+labcompany.org

@@ -1,0 +1,13 @@
+# Common service names (SAFE)
+ssh
+ftp
+http
+https
+mysql
+postgres
+smb
+ldap
+dns
+rdp
+smtp
+imap

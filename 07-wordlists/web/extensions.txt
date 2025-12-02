@@ -1,0 +1,11 @@
+# Common web file extensions (SAFE)
+php
+html
+js
+css
+json
+txt
+xml
+bak
+old
+conf

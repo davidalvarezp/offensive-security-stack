@@ -1,0 +1,17 @@
+# Hardened SSHD configuration
+Port 22
+Protocol 2
+PermitRootLogin no
+PasswordAuthentication no
+PubkeyAuthentication yes
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding no
+AllowTcpForwarding no
+ClientAliveInterval 300
+ClientAliveCountMax 2
+LoginGraceTime 20
+MaxAuthTries 2
+MaxSessions 2
+LogLevel VERBOSE

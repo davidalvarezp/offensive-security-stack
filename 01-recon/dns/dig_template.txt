@@ -1,0 +1,10 @@
+# DIG Enumeration Template
+# Edit the DOMAIN placeholder before launching
+
+dig DOMAIN any
+dig DOMAIN mx
+dig DOMAIN ns
+dig DOMAIN txt
+dig DOMAIN soa
+dig DOMAIN axfr @ns1.DOMAIN
+dig DOMAIN axfr @ns2.DOMAIN

@@ -1,0 +1,5 @@
+# Common SNMP community strings (lab testing only)
+public
+private
+community
+test

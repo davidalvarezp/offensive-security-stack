@@ -1,0 +1,11 @@
+# Safe example web paths (lab only)
+admin
+login
+logout
+api
+config
+uploads
+files
+dashboard
+test
+debug

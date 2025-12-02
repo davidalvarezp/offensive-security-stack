@@ -1,0 +1,5 @@
+# Username collection template (OSINT - Lab Use Only)
+jdoe
+jsmith
+admin.lab
+testing.user

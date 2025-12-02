@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  sliver-server:
+    image: sliverproject/sliver:stable   # Official sanctioned image
+    container_name: sliver-server
+    ports:
+      - "31337:31337"   # Sliver interactive port (lab)
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./data:/sliver
+    restart: unless-stopped

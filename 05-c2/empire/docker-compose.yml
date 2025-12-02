@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  empire-server:
+    image: bcsecurity/empire:latest   # Public, defensive research image
+    container_name: empire-server
+    ports:
+      - "1337:1337"   # API
+      - "5000:5000"   # Web Interface
+    environment:
+      - HOSTNAME=localhost
+    volumes:
+      - ./data:/empire
+    restart: unless-stopped

@@ -1,0 +1,14 @@
+### UFW Firewall Rules for Offensive VPS (Security Focused)
+
+# Default policies
+default deny incoming
+default allow outgoing
+
+# SSH (change port if you modify your SSH config)
+allow 22/tcp
+
+# Drop invalid packets
+deny in from 0.0.0.0 to 0.0.0.0
+
+# Logging
+logging on

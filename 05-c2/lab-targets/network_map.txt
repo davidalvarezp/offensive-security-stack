@@ -1,0 +1,12 @@
+# Lab Network Map
+
+# Example (customize to your environment)
+
+10.10.10.0/24
+ ├── 10.10.10.1    — Router
+ ├── 10.10.10.10   — Domain Controller
+ ├── 10.10.10.20   — Win10 Workstation
+ ├── 10.10.10.30   — Linux Server
+ └── 10.10.10.40   — Web Server
+
+Add your own lab hosts, never real-world networks.
