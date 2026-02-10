@@ -3,8 +3,8 @@ package segmentation
 import (
 	"strings"
 
-	"github.com/your-org/offensive-security-stack/internal/core"
-	"github.com/your-org/offensive-security-stack/internal/reporting"
+	"github.com/davidalvarezp/offensive-security-stack/internal/core"
+	"github.com/davidalvarezp/offensive-security-stack/internal/reporting"
 )
 
 type TrustBoundaryAnalyzer struct {

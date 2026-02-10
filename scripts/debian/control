@@ -4,7 +4,7 @@ Section: security
 Priority: optional
 Architecture: amd64
 Depends: libc6 (>= 2.31)
-Maintainer: Offensive Security Stack Team <security@example.com>
+Maintainer: davidalvarezp <contact@davidalvarezp.com>
 Description: Offensive Security Stack (OSS) - Educational Security Framework
  OSS is an open-source, educational security framework written in Go.
  It provides modular offensive and defensive security simulations
