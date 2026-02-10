@@ -1,0 +1,27 @@
+#!/bin/sh
+set -e
+
+echo "[OSS] Post-installation script running..."
+
+# Create configuration directory
+if [ ! -d "/etc/oss" ]; then
+    mkdir -p /etc/oss
+    chmod 755 /etc/oss
+    echo "[OSS] Created /etc/oss"
+fi
+
+# Create log directory
+if [ ! -d "/var/log/oss" ]; then
+    mkdir -p /var/log/oss
+    chmod 755 /var/log/oss
+    echo "[OSS] Created /var/log/oss"
+fi
+
+# Ensure binary is executable
+if [ -f "/usr/local/bin/oss" ]; then
+    chmod 755 /usr/local/bin/oss
+    echo "[OSS] Binary permissions set"
+fi
+
+echo "[OSS] Installation completed successfully."
+exit 0

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+echo "[OSS] Pre-removal script running..."
+
+# Nothing destructive here on purpose
+# Configuration and logs are preserved by default
+
+echo "[OSS] Pre-removal completed."
+exit 0

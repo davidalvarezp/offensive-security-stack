@@ -1,0 +1,13 @@
+Package: offensive-security-stack
+Version: 1.0.0
+Section: security
+Priority: optional
+Architecture: amd64
+Depends: libc6 (>= 2.31)
+Maintainer: Offensive Security Stack Team <security@example.com>
+Description: Offensive Security Stack (OSS) - Educational Security Framework
+ OSS is an open-source, educational security framework written in Go.
+ It provides modular offensive and defensive security simulations
+ designed for isolated lab environments, classrooms, and training.
+ .
+ ⚠️ This software is intended for educational use only.
